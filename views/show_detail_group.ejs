@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>group details</title>
+  </head>
+  <body>
+    <table border="1px" width="100%">
+      <tr>
+        <th>id</th>
+        <th>member</th>
+        <th>action</th>
+      </tr>
+      <% dataMember.forEach(d => { %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= d.name %></td>
+        <td><a href="">Delete</a></td>
+      </tr>
+      <% }) %>
+    </table>
+    <br><a href="/groups">back</a>
+  </body>
+</html>
