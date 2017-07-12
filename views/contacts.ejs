@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title>MVC</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> Name </th>
+            <th> Company</th>
+            <th> Telepon Number </th>
+              <th> Email </th>
+              <th> Group </th>
+              <th> ACTION </th>
+          </tr>
+        </thead>
+
+      <tbody>
+        <% panggilData.forEach(function(contact) { %>
+      <tr>
+      <th> <%= contact.id %> </th>
+      <th> <%= contact.name %> </th>
+      <th> <%= contact.company %> </th>
+      <th> <%= contact.telp_number %> </th>
+        <th> <%= contact.email %> </th>
+        <th> <%= contact.name_of_group %> </th>
+      <th><a href="/contacts/edit/<%= contact.id %>">Edit</a></th>
+      <th> <a href="/contacts/delete/<%= contact.id %>">Delete</a> </th>
+      <th> <a href="/contacts/addresses/<%= contact.id %>">Show Addresses</a> </th>
+      </tr>
+        <%  }) %>
+      </tbody>
+    <table>
+
+
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+<br>
+
+      <form action="/contacts" method="post">
+            Name:
+        <input type="text" name="name" placeholder="your name"><br>
+            Company:
+        <input type="text" name="company" placeholder="your company"><br>
+        Telepon Number:
+    <input type="text" name="telp_number" placeholder="your telepon"><br>
+    Email:
+<input type="text" name="email" placeholder="your email"><br>
+        <button type="submit"> submit </button>
+      </form>
+
+
+        </body>
+      </html>

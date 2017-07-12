@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+test is running
+
+<% panggilData.forEach(function(contact) { %>
+<tr>
+<th> <%= contact.id %> </th>
+<th> <%= contact.name %> </th>
+<th> <%= contact.company %> </th>
+<th><a href="/contacts/edit/<%= contact.id %>">Edit</a></th>
+<th> <a href="/contacts/delete/<%= contact.id %>">Delete</a> </th>
+<th> <a href="/contacts/addresses/<%= contact.id %>">Show Addresses</a> </th>
+</tr>
+<%  }) %>
+
+
+  </body>
+</html>
