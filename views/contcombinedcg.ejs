@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    table {
+      font-family:Comic Extrabold, sans-serif;
+      position: center;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Contacts with their groups </title>
+  </head>
+
+  <body>
+  <center><h3> Contacts with their groups </h3><center><br>
+  <center>
+  <table>
+    <tr>
+      <th>Contact Name</th>
+      <th>Contact ID</th>
+      <th>Group Name</th>
+      <th colspan='2'></th>
+    </tr>
+    <% data_contcombinedcg.forEach( GropCont =>{%>
+    <tr>
+      <td><%= GropCont.Name %></td>
+      <td><%= GropCont.ContactID %></td>
+      <td><%= GropCont.GroupName %></td>
+      <td><a href="/contcombinedcg/delete/<%= GropCont.ContactID %>"><button type="button" name="Delete">DELETE</button></a></td>
+      </tr>
+      <%})%>
+    </table>
+  </center>
+    </form>
+  </body>
+</html>
