@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Contact Group Page</title>
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body>
+    <h1><center><i class="fa fa-pencil"> Edit My Contact Groups</i></center></h1>
+    <div>
+      <form id="main-form" class="modal-content animate" name="mainForm" action="/contactgroup/update/<%= data[0].id %>" method="post">
+        <div class="container">
+          <label><b>ID Contact Group</b></label>
+          <input type="text" name="id" value="<%= data[0].id %>" disabled/>
+          <label><b>ID Contact</b></label>
+          <!-- <input type="text" name="contact_id" value="<%= data[0].contact_id %>" /> -->
+          <select name="contact_id">
+            <option value="<%= data[0].contact_id %>"><%= data[0].contact_id %></option>
+            <% dataContact.forEach(d => { %>
+              <option value="<%= d.id %>"><%= d.id %> <%= d.long_name %></option>
+            <% }) %>
+          </select>
+          <label><b>ID Group</b></label>
+          <!-- <input type="text" name="group_id" value="<%= data[0].group_id %>" /> -->
+          <select name="group_id">
+            <option value="<%= data[0].group_id %>"><%= data[0].group_id %></option>
+            <% dataGroup.forEach(dg => { %>
+              <option value="<%= dg.id %>"><%= dg.id %> <%= dg.name_group %></option>
+            <% }) %>
+          </select>
+          <div class="clearfix">
+            <button id="cancelbtn" class="cancelbtn" onclick="window.location='/contactgroup'">Cancel</button>
+            <button type="submit" class="submitbtn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
