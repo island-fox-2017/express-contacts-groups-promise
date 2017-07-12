@@ -8,10 +8,11 @@ let dataModel = new dbModel('./db/data.db')
 
 //contacts routing
 router.get('/', function (req, res) {
-  Contact.readData(dataModel.connection, function (err, rows) {
-    console.log(rows[0].id);
-    res.render('contacts', {contacts_list: rows})
-  })
+  Contact.readData(dataModel.connection)
+    .then(function (rows) {
+      res.render('contacts', {contacts_list: rows})
+      console.log(rows[0].id);
+    })
 })
 
 router.get('/add', function(req, res){

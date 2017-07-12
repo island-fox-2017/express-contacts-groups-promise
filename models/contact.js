@@ -21,12 +21,14 @@ class Contact {
   }
 
   static readData(conn, callback){
-    conn.all(`select * FROM CONTACT2017`, function (err, rows) {
-      if(!err){
-        callback(false, rows)
-      } else {
-        callback(true, null)
-      }
+    return new Promise(function (resolve, reject) {
+      conn.all(`select * FROM CONTACT2017`, function (err, rows) {
+        if(!err){
+          resolve(rows)
+        } else {
+          reject(err)
+        }
+      })
     })
   }
 

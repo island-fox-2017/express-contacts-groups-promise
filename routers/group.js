@@ -3,14 +3,18 @@ var router = express.Router();
 const Group = require('../models/group');
 const dbModel = require('../models/dbModel');
 let dataModel = new dbModel('./db/data.db')
-
+let koneksi = dataModel.connection
 
 
 //groups routing
 router.get('/', function(req, res){
-  Group.readData(dataModel.connection, function (err, data) {
-    res.render('groups',{groups_list: data})
-  });
+  Group.readData(koneksi)
+    .then(function (data) {
+      res.render('groups', {groups_list: data})
+    })
+  // Group.readData(dataModel.connection, function (err, data) {
+  //   res.render('groups',{groups_list: data})
+  // });
 })
 
 router.post('/', function (req, res) {

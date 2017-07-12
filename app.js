@@ -3,7 +3,6 @@ var express = require('express')
 const sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./db/data.db')
 
-
 const dbModel = require('./models/dbModel');
 const Contact = require('./models/contact');
 const Group = require('./models/group');
@@ -41,23 +40,6 @@ app.use('/groups', group);
 app.use('/profile', profile);
 app.use('/addresses', address);
 app.use('/my-contact-groups', mygroups);
-
-
-// app.get('/my-contact-groups', function (req, res) {
-//   db.all(`SELECT * from CONTACT2017 AS c LEFT JOIN contact_group AS cg ON c.id = cg.contact_id LEFT JOIN GROUPS AS g ON cg.group_id = g.id`, function (err, data) {
-//     db.all(`SELECT * from CONTACT2017`, function (err, datakontak) {
-//       db.all(`select * from GROUPS`, function (err, datagroup) {
-//         res.render('my_group', {grouping_data: data, datakontak: datakontak, datagroup: datagroup})
-//       })
-//     })
-//   });
-// })
-
-// app.post('/my-contact-groups', function(req, res) {
-//   db.run(`insert INTO contact_group (contact_id, group_id) VALUES (${req.body.contact_id}, ${req.body.group_id})`);
-//   res.redirect('/my-contact-groups')
-// })
-
 
 app.listen(3000)
 

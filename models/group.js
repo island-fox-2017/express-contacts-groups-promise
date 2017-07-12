@@ -15,14 +15,16 @@ class Group {
     db.run(`INSERT INTO GROUPS (group_name) VALUES ('${data.group_name}')`);
   }
 
-  static readData(db, callback){
-    db.all("select * FROM GROUPS",function (err, data) {
-      if(!err){
-        callback(false, data)
-      } else {
-        callback(true, null)
-      }
-    });
+  static readData(db){
+    return new Promise(function (resolve, reject) {
+      db.all("select * FROM GROUPS",function (err, data) {
+        if(!err){
+          resolve(data)
+        } else {
+          reject(err)
+        }
+      });
+    })
   }
 
   static readUpdateData(db, params, callback){
