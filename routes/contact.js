@@ -36,4 +36,71 @@ router.get('/delete/:id', function(req, res){
   res.redirect('/contacts');
 })
 
+// function deleteContact(id){
+//   return new Promise(function(resolve, reject){
+//     Contact.destroy(dbModel.connection, req.params.id, function(err, row){
+//       if(!err){
+//         resolve(row)
+//       } else {
+//         reject(err)
+//       }
+//     })
+//   })
+// }
+// 
+// function deleteContactGroup(id){
+//   return new Promise(function(resolve, reject){
+//     Contact.destroyContactGroup(dbModel.connection, req.params.id, function(err, row){
+//       if(!err){
+//         resolve(row)
+//       } else {
+//         reject(err)
+//       }
+//     })
+//   })
+// }
+// 
+// function deleteContactProfile(id){
+//   return new Promise(function(resolve, reject){
+//     Contact.destroyContactProfile(dbModel.connection, req.params.id, function(err, row){
+//       if(!err){
+//         resolve(row)
+//       } else {
+//         reject(err)
+//       }
+//     })
+//   })
+// }
+// 
+// function deleteContactAddress(id){
+//   return new Promise(function(resolve, reject){
+//     Contact.destroyContactAddress(dbModel.connection, req.params.id, function(err, row){
+//       if(!err){
+//         resolve(row)
+//       } else {
+//         reject(err)
+//       }
+//     })
+//   })
+// }
+// 
+// 
+// router.get('/delete/:id', function(req, res, next){
+//   let id = req.params.id
+//   deleteContact(id)
+//   .then(function(){
+//     return deleteContactGroup(id)
+//   })
+//   .then(function(){
+//     return deleteContactProfile(id)
+//   })
+//   .then(function(){
+//     return deleteContactAddress(id)
+//   })
+//   .then(function(){
+//     res.redirect('/contacts');
+//   })
+//   .catch()
+// })
+
 module.exports = router;

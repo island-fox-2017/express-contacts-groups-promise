@@ -40,6 +40,19 @@ class Contact {
     conn.run(`DELETE FROM Contacts WHERE id=${id};`);
   }
   
+  static destroyContactGroup(){
+    conn.run(`DELETE FROM Contacts_Groups WHERE Contacts_id = ${id};`)
+  }
+  
+  static destroyContactProfile(){
+    conn.run(`DELETE FROM Profiles WHERE Contact_id=${id};`)
+  }
+  
+  static destroyContactAddress(){
+    conn.run(`DELETE FROM Address WHERE ContactId=${id};`)
+  }
+  
+  
 }
 
 module.exports = Contact;
