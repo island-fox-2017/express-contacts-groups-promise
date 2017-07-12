@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>contacts groups</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- <%= JSON.stringify(contactGroup) %><br> -->
+    <form class="" action="/contacts_groups/add" method="POST">
+      <a href="/"><input type="button" value="HOME"></a>      
+      <input type="submit" name="" value="ASSIGN NEW CONTACTS GROUPS">
+      <a href="/contacts"><input type="button" value="CONTACTS"></a>
+      <a href="/groups"><input type="button" value="GROUPS"></a> 
+      <a href="/profiles"><input type="button" value="PROFILES"></a>     
+    </form>
+    
+    <table style="table">      
+      <tr style="tr">
+        <th style="th">ID</th>
+        <th style="th">Contacts ID</th>  
+        <th style="th">Groups ID</th>
+        <th class="action">ACTION</th>        
+      </tr>            
+      
+      <% contactGroup.forEach(cg => { %>     
+      <tr style="tr">
+        <td style="td"><%= cg.id %></td>
+        <td style="td"><%= cg.contacts_id %></td>        
+        <td style="td"><%= cg.groups_id %></td>
+        <!-- <td class="editdelete"><a href="/contacts_groups/edit/<%= cg.id %>">EDIT</a></td> -->
+        <td class="editdelete"><a href="/contacts_groups/delete/<%= cg.id %>" style="color:red" onclick="return confirm('Are you sure want to delete this record?')">DELETE</a></td>  
+      </tr>
+      <% }) %>
+      
+    </table>
+  </body>
+</html>
