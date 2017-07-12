@@ -1,0 +1,39 @@
+sqlite> SELECT * from ADDRESS INNER JOIN CONTACT2017 ON ADDRESS.contact_id = CONTACT2017.id INNER JOIN PROFILE ON PROFILE.contact_id = CONTACT2017.id;
+2|Jl. Pasar Kebayoran Lama|Kebayoran Lama 2|12242|9|9|Rahmat Hidayat|Hacktiv8.com|8134323535|rahmat@hacktiv8.com|20|rah|dayat|9|Sayyaf|Rabbani
+3|Jl. Raya Purwadadi|Subang|14230|10|10|Nadine Rihana|Lombok Networks|812315|assisst@gmail.com|21|okaja|ini|10|Nadine|Rihana
+4|Jl. Raden Mas Panji Anom|Mataram|83117|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+5|Jl. Raya Narogong|Cileungsi|526|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+6|Jl. Raya Alternatif Cibubur|Cibubur|852|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+7|Jl. Raya Purwadadi|Subang|14230|8|8|Achim Baggins|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|19|bag|kopral|8|Tama|Tomo
+sqlite> SELECT * from ADDRESS INNER JOIN CONTACT2017 ON ADDRESS.contact_id = CONTACT2017.id INNER JOIN PROFILE ON PROFILE.contact_id = CONTACT2017.id where contact_id=6;
+Error: ambiguous column name: contact_id
+sqlite> SELECT * from ADDRESS INNER JOIN CONTACT2017 ON ADDRESS.contact_id = CONTACT2017.id INNER JOIN PROFILE ON PROFILE.contact_id = CONTACT2017.id;
+2|Jl. Pasar Kebayoran Lama|Kebayoran Lama 2|12242|9|9|Rahmat Hidayat|Hacktiv8.com|8134323535|rahmat@hacktiv8.com|20|rah|dayat|9|Sayyaf|Rabbani
+3|Jl. Raya Purwadadi|Subang|14230|10|10|Nadine Rihana|Lombok Networks|812315|assisst@gmail.com|21|okaja|ini|10|Nadine|Rihana
+4|Jl. Raden Mas Panji Anom|Mataram|83117|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+5|Jl. Raya Narogong|Cileungsi|526|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+6|Jl. Raya Alternatif Cibubur|Cibubur|852|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+7|Jl. Raya Purwadadi|Subang|14230|8|8|Achim Baggins|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|19|bag|kopral|8|Tama|Tomo
+sqlite> SELECT * from ADDRESS INNER JOIN CONTACT2017 ON ADDRESS.contact_id = CONTACT2017.id INNER JOIN PROFILE ON PROFILE.contact_id = CONTACT2017.id where id=6;Error: ambiguous column name: id
+sqlite> SELECT * from ADDRESS INNER JOIN CONTACT2017 ON ADDRESS.contact_id = CONTACT2017.id INNER JOIN PROFILE ON PROFILE.contact_id = CONTACT2017.id where PROFILE.contact_id=6;
+4|Jl. Raden Mas Panji Anom|Mataram|83117|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+6|Jl. Raya Alternatif Cibubur|Cibubur|852|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+5|Jl. Raya Narogong|Cileungsi|526|6|6|Achim Lou|Hacktiv8 Indonesia|81803704343|achim_baggins@yahoo.com|22|ikan|louhan2017|6|Achim|Lou
+sqlite> create table contact_group (id integer primary key autoincrement, contact_id integer, group_id integer)
+   ...> ;
+sqlite> .scema
+Error: unknown command or invalid arguments:  "scema". Enter ".help" for help
+sqlite> .schema
+CREATE TABLE CONTACT2017 (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, company text, phone INTEGER, email text);
+CREATE TABLE GROUPS (id INTEGER PRIMARY KEY AUTOINCREMENT, group_name text);
+CREATE TABLE PROFILE (id integer primary key autoincrement, username text, pass text, contact_id integer, firstname text, lastname text);
+CREATE TABLE ADDRESS (id integer primary key autoincrement, street text, city text, zip_code integer, contact_id integer);
+CREATE TABLE contact_group (id integer primary key autoincrement, contact_id integer, group_id integer);
+sqlite> select * FROM GROUPS AS g INNER JOIN contact_group AS cg ON g.id = cg.group_id INNER JOIN CONTACT2017 AS c ON c.id = cg.contact_id;
+sqlite> select * from GROUPS
+   ...> ;
+2|Teman Kantor
+3|Family
+4|Teman Lama
+5|Teman Kampung
+sqlite>
