@@ -1,0 +1,11 @@
+<form action="/profiles/edit/<%= datas.id %>" method="post">
+  <input type="text" name='username' value='<%= datas.username %>'>
+  <input type="text" name='password' value='<%= datas.password %>'>
+  <select name="contacts_id">
+    <option value="<%= datas.contacts_id%>"><%= datas.contacts_id%></option>
+    <% data_contact.forEach( cont => {%>
+      <option value="<%= cont.id%>"><%= cont.name%></option>
+    <%})%>
+  </select>
+  <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,12 @@
+<form action="/address/edit/<%= datas.id %>" method="post">
+  <input type="text" name='street' value='<%= datas.street %>'>
+  <input type="text" name='city' value='<%= datas.city %>'>
+  <input type="text" name='zip_code' value='<%= datas.zip_code %>'>
+    <select name="contacts_id">
+      <option value="<%= datas.contacts_id%>"><%= datas.contacts_id%></option>
+      <% data_contact.forEach( cont => {%>
+        <option value="<%= cont.id%>"><%= cont.name%></option>
+      <%})%>
+    </select>
+  <button type="submit">Submit</button>
+</form>
