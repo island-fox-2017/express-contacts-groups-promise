@@ -29,12 +29,14 @@
         <tr>
           <th>ID</th>
           <th>GROUP NAME</th>
+          <th>NAME</th>
           <th>ACTION</th>
         </tr>
         <% data.forEach(d => {%>
           <tr>
             <td><%= d.id %></td>
             <td><%= d.name_group %></td>
+            <td><%= d.long_name %></td>
             <td><a href='groups/edit/<%= d.id %>'><i class="fa fa-pencil"> Edit</i></a> || <a href='groups/delete/<%= d.id %>'><i class="fa fa-eraser"> Delete</i></a></td>
           </tr>
         <% }) %>

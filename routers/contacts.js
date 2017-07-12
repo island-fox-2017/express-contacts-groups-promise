@@ -65,71 +65,8 @@ router.post('/update/:id', function(req, res) {
   res.redirect('/contacts')
 })
 
-// function deleteContact(id) {
-//   return new Promise(function(resolve, reject) {
-//     Contact.deleteDataContacts(dbModel.connection, req.params.id, function (error, row) {
-//       if (!error) {
-//         resolve(row)
-//       } else {
-//         reject(error)
-//       }
-//     })
-//   })
-// }
-//
-// function deleteContactGroup(id) {
-//   return new Promise(function(resolve, reject) {
-//     Contact.deleteDataContactGroupByContactId(dbModel.connection, req.params.id, function (error, row) {
-//       if (!error) {
-//         resolve(row)
-//       } else {
-//         reject(error)
-//       }
-//     })
-//   })
-// }
-//
-// function deleteProfile(id) {
-//   return new Promise(function(resolve, reject) {
-//     Contact.deleteDataProfileByContactId(dbModel.connection, req.params.id, function (error, row) {
-//       if (!error) {
-//         resolve(row)
-//       } else {
-//         reject(error)
-//       }
-//     })
-//   })
-// }
-//
-// function deleteAddress(id) {
-//   return new Promise(function(resolve, reject) {
-//     Contact.deleteDataAddressByContactId(dbModel.connection, req.params.id, function (error, row) {
-//       if (!error) {
-//         resolve(row)
-//       } else {
-//         reject(error)
-//       }
-//     })
-//   })
-// }
-
 router.get('/delete/:id', function(req, res) {
   let id = req.params.id;
-  //
-  // deleteContact(id)
-  // .then(function() {
-  //   return deleteContactGroup(id)
-  // })
-  // .then(function() {
-  //   return deleteProfile(id)
-  // })
-  // .then(function() {
-  //   return deleteAddress(id)
-  // })
-  // .then(function() {
-  //   res.redirect('/contacts')
-  // })
-  // .catch()
   Contact.deleteDataContacts(dbModel.connection, req.params.id);
   Contact.deleteDataContactGroupByContactId(dbModel.connection, req.params.id);
   Contact.deleteDataProfileByContactId(dbModel.connection, req.params.id);

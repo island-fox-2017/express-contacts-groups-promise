@@ -23,6 +23,21 @@ class Groups {
     })
   }
 
+  static forDetailGroups(conn, callback) {
+    conn.all(`select groups.id, groups.name_group,
+contacts.first_name || ' ' || contacts.last_name as long_name
+from groups left join contactgroup
+on groups.id = contactgroup.group_id
+left join contacts
+on contactgroup.contact_id = contacts.id`, function(error, rows) {
+      if (!error) {
+        callback(false, rows)
+      } else {
+        callback(true, null)
+      }
+    })
+  }
+
   static insertDataGRoups(conn, data) {
     conn.run(`INSERT INTO groups (name_group) VALUES ('${data.name_group}')`);
   }
