@@ -11,34 +11,25 @@ let db = new sqlite3.Database('./db/data.db');
 
 // Contact Routing
 
-// router.get('/', function(req, res) {
-//   Contact.showData(dbModel.connection, function(err, rows) {
-//     if(!err) {
-//       //res.send(rows);
-//       res.render('contacts', {datas: rows});
-//     }
-//   });
-// });
-
 router.get('/', function (req, res) {
   // Manipulasi Object Row
 
 
-
   Contact.callContactPromise(dbModel.connection)
   .then(function(result) {
+
     for (let i = 0; i < result[0].length; i++) {
       result[0][i].name_of_group = [];
+
       for (let j = 0; j < result[1].length; j++) {
         if(result[0][i].id === result[1][j].contact_id) {
           result[0][i].name_of_group.push(result[1][j].name_of_group)
         }
       }
     }
-    //res.send(result[0]);
+
     res.render('contacts', {datas: result[0]});
   })
-  
 });
 
 

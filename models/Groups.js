@@ -40,15 +40,13 @@ class Groups {
   }
 
   static editData(conn, id, callback) {
-    conn.all(`
-      SELECT * FROM Groups WHERE id = ${id};
-      `, function (err, rows) {
-        if (!err) {
-          callback(false, rows);
-        } else {
-          callback(true, null)
-        }
-      });
+    conn.all(`SELECT * FROM Groups WHERE id = ${id};`, function (err, rows) {
+      if (!err) {
+        callback(false, rows);
+      } else {
+        callback(true, null)
+      }
+    });
   }
 
   static updateData(conn, obj) {

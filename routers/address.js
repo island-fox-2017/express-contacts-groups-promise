@@ -12,19 +12,10 @@ let db = new sqlite3.Database('./db/data.db');
 // Address Routing
 
 router.get('/', function(req, res) {
-  db.all(`
-    SELECT * FROM Address;
-    `, function(err, rows) {
-      if(!err) {
-        db.all(`
-          SELECT id, name FROM Contacts;
-          `, function(err, rows2) {
-            if(!err) {
-              res.render('address', {datas: rows, selectContact: rows2});
-            }
-        });
-      }
-    });
+  Address.callAddressPromises(dbModel.connection)
+  .then(result => {
+    res.render('address', {datas: result[0], selectContact: result[1]});
+  })
 });
 
 router.post('/', function(req, res) {

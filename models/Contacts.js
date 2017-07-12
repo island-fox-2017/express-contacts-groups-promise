@@ -30,8 +30,7 @@ class Contacts {
         ON g.id = cg.group_id
       JOIN Contacts AS c
         ON c.id = cg.contact_id
-      ;
-      `, function(err, rows) {
+      ;`, function(err, rows) {
         if(!err) {
           callback(false, rows);
         } else {
@@ -77,7 +76,7 @@ class Contacts {
       return data_contact;
     })
     .catch((err) => {
-      res.send('hiks error promise contacts');
+      console.log("Error Contact Promise");
     });
 
     let data_contact_join = Contacts.showContactPromise2(conn)
@@ -85,26 +84,11 @@ class Contacts {
       return data_contact_join;
     })
     .catch((err) => {
-      res.send('hiks error promise contacts');
+      console.log("Error Contact Promise");
     });
 
     return Promise.all([data_contact, data_contact_join]);
   }
-
-  // static callContactPromise(conn) {
-  //   return Contacts.showContactPromise(conn)
-  //   .then((data_contact) => {
-  //     return [
-  //       data_contact,
-  //       Contacts.showContactPromise2(conn).then((data_contact_join) => {
-  //         return data_contact_join;
-  //       })
-  //     ];
-  //   })
-  //   .catch((err) => {
-  //     res.send('hiks');
-  //   });
-  // }
 
   static insertData(conn, objSomething) {
     conn.run(`
@@ -114,21 +98,17 @@ class Contacts {
   }
 
   static deleteData(conn, id) {
-    conn.run(`
-      DELETE FROM Contacts WHERE id = ${id};
-    `);
+    conn.run(`DELETE FROM Contacts WHERE id = ${id};`);
   }
 
   static editData(conn, id, callback) {
-    conn.all(`
-      SELECT * FROM Contacts WHERE id = ${id};
-      `, function (err, rows) {
-        if (!err) {
-          callback(false, rows);
-        } else {
-          callback(true, null);
-        }
-      });
+    conn.all(`SELECT * FROM Contacts WHERE id = ${id};`, function (err, rows) {
+      if (!err) {
+        callback(false, rows);
+      } else {
+        callback(true, null);
+      }
+    });
   }
 
   static updateData(conn, obj) {

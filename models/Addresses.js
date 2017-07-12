@@ -19,8 +19,48 @@ class Addresses {
     });
   }
 
-  static showData(conn, callback) {
-    conn
+  static showAddressPromise1(conn) {
+    return new Promise((fulfill, reject) => {
+      conn.all(`SELECT * FROM Address;`, function(err, rows) {
+        if(err) {
+          reject();
+        } else {
+          fulfill(rows);
+        }
+      });
+    });
+  }
+
+  static showAddressPromise2(conn) {
+    return new Promise((fulfill, reject) => {
+      conn.all(`SELECT id, name FROM Contacts;`, function(err, rows) {
+        if(err) {
+          reject();
+        } else {
+          fulfill(rows);
+        }
+      });
+    });
+  }
+
+  static callAddressPromises(conn) {
+    let dataAddress = Addresses.showAddressPromise1(conn)
+    .then((data_address) => {
+      return data_address;
+    })
+    .catch((err) => {
+      console.log("Error Address Promise");
+    });
+
+    let dataAddress2 = Addresses.showAddressPromise2(conn)
+    .then(data_address2 => {
+      return data_address2;
+    })
+    .catch((err) => {
+      console.log("Error Address Promise");
+    });
+
+    return Promise.all([dataAddress, dataAddress2]);
   }
 
   static insertData(conn, obj) {

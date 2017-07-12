@@ -12,19 +12,10 @@ let db = new sqlite3.Database('./db/data.db');
 // Profile Routing
 
 router.get('/', function(req, res) {
-  db.all(`
-    SELECT * FROM Profiles;
-    `, function(err, rows) {
-      if (!err) {
-        db.all(`
-          SELECT id, name FROM Contacts;
-          `, function (err, rows2) {
-            if(!err) {
-              res.render('profiles', {datas: rows, selectContact: rows2});
-            }
-        });
-      }
-    });
+  Profile.callProfilePromises(dbModel.connection)
+  .then(result => {
+    res.render('profiles', {datas: result[0], selectContact: result[1]});
+  });
 });
 
 router.post('/', function (req, res) {
