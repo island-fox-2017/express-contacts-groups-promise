@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Groups Page</title>
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <table border="1">
+      <tr>
+      <th>Contacts Id</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Telp Number</th>
+      <th>Email</th>
+      <th>Groups Id</th>
+      <th>Name of Groups</th>
+      </tr>
+    <% dataContactsGroups.forEach( data => { %>
+      <tr>
+      <td><%= data.contacts_id %></td>
+      <td><%= data.name %></td>
+      <td><%= data.company %></td>
+      <td><%= data.telp_number %></td>
+      <td><%= data.email %></td>
+      <td><%= data.group_id %></td>
+      <td><%= data.name_of_group %></td>
+      </tr>
+    <% }) %>
+  </table>
+    <br>
+    <form action="/contactsGroups" method="post">
+      <table>
+        <tr>
+        <td>Contact Id: </td>
+        <td>
+          <select name="contacts_id">
+            <% dataContacts.forEach( dt =>{ %>
+              <option value="<%=dt.id %>">(<%= dt.id %>). <%= dt.name %></option>
+            <% }) %>
+          </select>
+        </td>
+        </tr>
+        <tr>
+          <td>Group Id:</td>
+          <td>
+            <select name="group_id">
+              <% dataGroups.forEach( dt =>{ %>
+                <option value="<%=dt.id %>">(<%= dt.id %>). <%= dt.name_of_group %></option>
+              <% }) %>
+            </select>
+          </td>
+        </tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+    <a href="/">index page</a>
+  </body>
+</html>
