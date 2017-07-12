@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> MVC </title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Groups Id</th>
+        <th>Contacts Id</th>
+        <th>Action</th>
+      </tr>
+      <% panggilData.forEach( cg => {%>
+      <tr>
+        <td><%= cg.id%></td>
+        <td><%= cg.ContactId%></td>
+        <td><%= cg.GroupId%></td>
+      <%}) %>
+      </tr>
+
+    </table>
+
+    <form action="/contactsgroups" method="post">
+      <select name="ContactId">
+        <% panggilDataContact.forEach( contact => {%>
+          <option value="<%= contact.id%>"><%= contact.name%></option>
+        <%})%>
+      </select>
+      <select name="GroupId">
+        <% panggilDataGroup.forEach( group => {%>
+          <option value="<%= group.id%>"><%= group.name_of_group%></option>
+        <%})%>
+      </select>
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>
