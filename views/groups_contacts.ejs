@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>groups contacts</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- <%= JSON.stringify(data) %> -->
+    <form class="" action="/contacts_groups/add" method="POST">
+      <a href="/"><input type="button" value="HOME"></a>      
+      <input type="submit" name="" value="ASSIGN NEW CONTACTS GROUPS">
+      <a href="/contacts"><input type="button" value="CONTACTS"></a>
+      <a href="/groups"><input type="button" value="GROUPS"></a> 
+      <a href="/profiles"><input type="button" value="PROFILES"></a>     
+    </form>
+    
+    <table style="table">      
+      <tr style="tr">
+        <th style="th">ID</th>
+        <th style="th">Group</th>  
+        <th style="th">Contact</th>        
+      </tr>            
+      
+      <% data.forEach(func => { %>     
+      <tr style="tr">
+        <td style="td"><%= func.groups_id %></td>
+        <td style="td"><%= func.name_of_group %></td>        
+        <td style="td"><%= func.name %></td>  
+      </tr>
+      <% }) %>
+      
+    </table>
+  </body>
+</html>
