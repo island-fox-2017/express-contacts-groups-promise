@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Detail Profile</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+
+    <!-- <%=JSON.stringify(contact_data)%> -->
+    <table border="1">
+      <tr>
+        <th> No </th>
+        <th> Name</th>
+        <th> Group Name</th>
+      </tr>
+      <% var i=1; contact_data.forEach(c => { %>
+        <tr>
+          <td><%= i++ %> </td>
+          <td><%= c.name %></td>
+          <td><%= c.name_of_group %></td>
+          <td><a href="list-groups/delete/<%= c.id %>">delete</a></td>
+        </tr>
+
+     <% }) %>
+    </table>
+    <br>
+    <br>
+
+    <a href="/contacts">back</a>
+    <a href="/">home</a>
+  </body>
+</html>

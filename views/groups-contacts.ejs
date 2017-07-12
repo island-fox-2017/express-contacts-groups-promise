@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Groups-Contacts</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <div class="title">
+      <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Contact Name</th>
+          <th>Group Name</th>
+        </tr>
+        <% gc_data.forEach(gc => { %>
+          <tr>
+            <td><%= gc.id %> </td>
+            <td><%= gc.name %></td>
+            <td><%= gc.name_of_group %></td>
+            <!-- <td><a href="groups-contacts/edit/<%= gc.id %>">edit</a></td> -->
+            <td><a href="groups-contacts/delete/<%= gc.id %>">delete</a></td>
+          </tr>
+        <% }) %>
+      </table>
+
+      <br>
+      <br>
+      <form action="/groups-contacts" method="post">
+      Group Name
+      <select name="group_id">
+        <% group_data.forEach(g => { %>
+          <option value="<%= g.id %>"><%= g.id %>.<%= g.name_of_group %></option>
+        <% }) %>
+      </select><br><br>
+      Contact Name
+      <select name="contact_id">
+        <% contact_data.forEach(c => { %>
+          <option value="<%= c.id %>"><%= c.id %>.<%= c.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Add to Group</button>
+      </form>
+
+      <a href="/">home</a>
+    </div>
+  </body>
+</html>
