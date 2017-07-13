@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit addresses</title>
+  </head>
+  <body>
+       <h3> <%= JSON.stringify(data_addresses) %></h3>
+       <h3> <%= JSON.stringify(data_contacts) %></h3>
+      <form action="/addresses/edit/:<%= data_addresses[0].id %>" method="post">
+      <input type="hidden" name="id" placeholder="ID" value="<%= data_addresses[0].id %>">
+      <input type="text" name="street" placeholder="Your username" value="<%= data_addresses[0].street %>">
+      <input type="text" name="city" placeholder="Your password" value="<%= data_addresses[0].city %>">
+      <input type="text" name="zip_code" placeholder="Your password" value="<%= data_addresses[0].zip_code %>">
+      <select name="contact_id">
+        <option value="<%= data_addresses[0].contact_id %>"><%= data_contacts[(data_addresses[0].contact_id-1)].name %></option>
+        <% data_contacts.forEach(contact => { %>
+          <option value="<%= contact.id %>"><%= contact.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </br>
+  <a href="/addresses">Cancel</a>
+  </body>
+</html>
