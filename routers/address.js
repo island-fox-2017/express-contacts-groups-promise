@@ -11,7 +11,6 @@ router.get('/',function (req,res) {
     Address.showContact(connect.dataBase)
     .then(rows =>{
         res.render('address',{contactName : rows, addressData : address})
-
     })
   }).catch(function(){console.log(err);})
 

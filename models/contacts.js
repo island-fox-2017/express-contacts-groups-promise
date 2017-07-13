@@ -17,15 +17,17 @@ class Contact {
     })
   }
   static joinContacs(connection,callback){
-      connection.all(`SELECT c.id ,  gr.name_of_group, co.group_id FROM Contact AS c
-	                    LEFT JOIN ContactGroup AS co ON  c.id = co.contact_id
-	                    LEFT JOIN Groups AS gr ON gr.id = co.group_id `,function(err,rows){
-                        if (!err) {
-                          callback(false,rows)
-                        }else {
-                          callback(true,null)
-                        }
-                      })
+
+        connection.all(`SELECT c.id, c.name, c.company, c.telp_number , c.email,  gr.name_of_group FROM Contact AS c
+	                      LEFT JOIN ContactGroup AS co ON  c.id = co.contact_id
+	                      LEFT JOIN Groups AS gr ON gr.id = co.group_id`,function(err,rows){
+                          if(!err){
+                            callback(false,rows)
+                          }else {
+                            callback(true,null)
+                          }
+                        })
+
   }
   static insertContact(connection, nameData , companyData, telp_numberData , emailData){
     connection.run(`INSERT INTO Contact (name,company,telp_number,email)
